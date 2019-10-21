@@ -1,0 +1,39 @@
+<!doctype html>
+
+<head>
+    <title>Canvas</title>
+    <script src="player.js"></script>
+    <script src="bullet.js"></script>
+    <script src="enemy.js"></script>
+</head>
+
+<body>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+    <script>
+        var canvas, canvasContext;
+
+        window.onload = function() {
+            canvas = document.getElementById('gameCanvas');
+            canvasContext = canvas.getContext('2d');
+
+            document.addEventListener('keydown', keyPressed);
+            document.addEventListener('keyup', keyReleased);
+
+            for (var i = 0; i < enemyCount; i++) {
+                makeEnemy();
+            }
+
+            setInterval(mainloop, 1000 / 50);
+        }
+
+        function mainloop() { // loop runs code 50 times per second 
+            colorRect(0, 0, canvas.width, canvas.height, 'black'); //bg
+
+            function colorRect(x, y, w, h, c) {
+                canvasContext.fillStyle = c;
+                canvasContext.fillRect(x, y, w, h);
+            }
+
+    </script>
+</body>
